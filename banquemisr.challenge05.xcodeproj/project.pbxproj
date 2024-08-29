@@ -29,6 +29,7 @@
 		E9DA8A6C2C8010FA00DA3BDF /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8A6B2C8010F900DA3BDF /* MoviesViewModel.swift */; };
 		E9DA8A6F2C80114500DA3BDF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8A6E2C80114500DA3BDF /* Observable.swift */; };
 		E9DA8A712C801C8200DA3BDF /* MoviesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8A702C801C8200DA3BDF /* MoviesCellViewModel.swift */; };
+		E9F05AB92C81172900EB74A9 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F05AB82C81172900EB74A9 /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E9DA8A6B2C8010F900DA3BDF /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		E9DA8A6E2C80114500DA3BDF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E9DA8A702C801C8200DA3BDF /* MoviesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCellViewModel.swift; sourceTree = "<group>"; };
+		E9F05AB82C81172900EB74A9 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				E9DA8A652C80059F00DA3BDF /* Repository */,
 				E9DA8A602C7FF9C200DA3BDF /* Networking */,
 				E9DA8A512C7FDE7700DA3BDF /* Models */,
+				E9F05AB72C8116FC00EB74A9 /* Caching */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -259,6 +262,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E9F05AB72C8116FC00EB74A9 /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				E9F05AB82C81172900EB74A9 /* ImageCache.swift */,
+			);
+			path = Caching;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -340,6 +351,7 @@
 				E9DA172E2C7E781B00A8B00A /* ViewController.swift in Sources */,
 				E9DA8A712C801C8200DA3BDF /* MoviesCellViewModel.swift in Sources */,
 				E9DA172A2C7E781B00A8B00A /* AppDelegate.swift in Sources */,
+				E9F05AB92C81172900EB74A9 /* ImageCache.swift in Sources */,
 				E9DA8A592C7FE96900DA3BDF /* MoviesRepository.swift in Sources */,
 				E9DA8A622C7FFA5200DA3BDF /* Constants.swift in Sources */,
 				E9DA8A5D2C7FED6800DA3BDF /* MoviesServices.swift in Sources */,

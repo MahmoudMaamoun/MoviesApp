@@ -11,7 +11,7 @@ class MoviesViewModel {
     
     private let moviesRepository:MoviesRepository
     // Observable properties
-    var movies: Observable<[Movie]> = Observable([])
+    var movies: Observable<[MoviesCellViewModel]> = Observable([])
     var error: Observable<Error> = Observable(nil)
     var isLoadingData: Observable<Bool> = Observable(false)
         
@@ -32,7 +32,7 @@ class MoviesViewModel {
             
             switch res {
             case .success(let newMovies):
-                self?.movies.value?.append(contentsOf: newMovies)
+                self?.movies.value?.append(contentsOf: newMovies.map({MoviesCellViewModel(movie: $0)}))
                 return
             case .failure(let err):
                 self?.error.value = err
