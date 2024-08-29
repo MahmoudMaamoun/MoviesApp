@@ -19,7 +19,7 @@ enum NetworkError: Error {
 class NetworkLayer {
     typealias CompletionHandler<T> = (Result<T, NetworkError>) -> Void
     
-    func get<T: Decodable>(urlString: String, responseType: T.Type, completion: @escaping CompletionHandler<T>) {
+    func get<T: Decodable>(urlString: String, responseType: T.Type, completion:@escaping (Result<T, NetworkError>) -> Void) {
         
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
@@ -27,9 +27,10 @@ class NetworkLayer {
         }
         
         var request = URLRequest(url: url)
-        request.timeoutInterval = 30 // Customizable timeout
+        request.timeoutInterval = 10 // Customizable timeout
         // You can add headers if needed
-        // request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(Constants.shared.accessToken, forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {

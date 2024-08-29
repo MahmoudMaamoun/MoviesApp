@@ -10,13 +10,41 @@ import UIKit
 class MoviesListViewController: UIViewController {
 
     @IBOutlet weak var tbView: UITableView!
+    
+    private var viewModel:MoviesViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tbView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
+        registerCell()
+        viewModel = MoviesViewModel(moviesRepository: MoviesDataRepositoriy(apiClient: APIClient()))
+        viewModel.fetchMovies()
+        bindToViewModel()
         // Do any additional setup after loading the view.
     }
 
-
+    func registerCell() {
+        tbView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
+    }
+    
+    func bindToViewModel() {
+        viewModel.isLoadingData.bind { isLoading in
+//            print(isLoading?.description)
+        }
+        
+        viewModel.movies.bind { movies in
+            self.reloadTableView()
+        }
+        
+        viewModel.error.bind { err in
+            print(err.debugDescription)
+        }
+    }
+    
+    func reloadTableView(){
+        DispatchQueue.main.async {
+            self.tbView.reloadData()
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -32,11 +60,12 @@ class MoviesListViewController: UIViewController {
 extension MoviesListViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return viewModel.numOfRows()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as! MovieTableViewCell
         
+//        cell.movieTitle.text = 
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

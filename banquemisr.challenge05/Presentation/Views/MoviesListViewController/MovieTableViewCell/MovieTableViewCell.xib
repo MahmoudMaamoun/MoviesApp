@@ -19,20 +19,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYL-DN-yOS">
                         <rect key="frame" x="8" y="4" width="304" height="124"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="vSF-Yc-Jhf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="vSF-Yc-Jhf">
                                 <rect key="frame" x="4" y="4" width="99" height="116"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vSF-Yc-Jhf" secondAttribute="height" multiplier="99:116" id="l9t-sK-OxC"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWT-ec-zVr">
-                                <rect key="frame" x="111" y="16" width="193" height="29"/>
+                                <rect key="frame" x="111" y="12" width="193" height="29"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28-08-2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40W-J9-xfd">
-                                <rect key="frame" x="111" y="89" width="185" height="18"/>
+                                <rect key="frame" x="111" y="102" width="185" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -43,9 +43,9 @@
                             <constraint firstItem="BWT-ec-zVr" firstAttribute="leading" secondItem="vSF-Yc-Jhf" secondAttribute="trailing" constant="8" id="3Ya-oy-ddF"/>
                             <constraint firstItem="40W-J9-xfd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BWT-ec-zVr" secondAttribute="bottom" id="7nL-z4-f5n"/>
                             <constraint firstAttribute="trailing" secondItem="BWT-ec-zVr" secondAttribute="trailing" id="DDh-oh-zed"/>
-                            <constraint firstItem="BWT-ec-zVr" firstAttribute="top" secondItem="vSF-Yc-Jhf" secondAttribute="top" constant="12" id="V4M-HR-r3A"/>
+                            <constraint firstItem="BWT-ec-zVr" firstAttribute="top" secondItem="vSF-Yc-Jhf" secondAttribute="top" constant="8" id="V4M-HR-r3A"/>
                             <constraint firstAttribute="trailing" secondItem="40W-J9-xfd" secondAttribute="trailing" constant="8" id="Wii-Px-kJI"/>
-                            <constraint firstItem="40W-J9-xfd" firstAttribute="bottom" secondItem="vSF-Yc-Jhf" secondAttribute="bottom" constant="-13" id="Zon-mf-JDK"/>
+                            <constraint firstItem="40W-J9-xfd" firstAttribute="bottom" secondItem="vSF-Yc-Jhf" secondAttribute="bottom" id="Zon-mf-JDK"/>
                             <constraint firstAttribute="bottom" secondItem="vSF-Yc-Jhf" secondAttribute="bottom" constant="4" id="kqX-8o-oPL"/>
                             <constraint firstItem="40W-J9-xfd" firstAttribute="leading" secondItem="vSF-Yc-Jhf" secondAttribute="trailing" constant="8" id="nH6-8N-ox8"/>
                             <constraint firstItem="vSF-Yc-Jhf" firstAttribute="leading" secondItem="FYL-DN-yOS" secondAttribute="leading" constant="4" id="oYy-u7-540"/>
@@ -61,6 +61,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieDate" destination="40W-J9-xfd" id="bxc-8w-AZd"/>
+                <outlet property="moviePosterView" destination="vSF-Yc-Jhf" id="JKI-0M-Mfd"/>
+                <outlet property="movieTitle" destination="BWT-ec-zVr" id="Olg-Ad-Ckl"/>
+            </connections>
             <point key="canvasLocation" x="-137.40458015267174" y="51.408450704225352"/>
         </tableViewCell>
     </objects>
