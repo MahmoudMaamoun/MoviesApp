@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesListViewController" customModule="banquemisr_challenge05" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndecator" destination="XHf-nO-dUf" id="VOF-lw-ZC6"/>
                 <outlet property="tbView" destination="duC-8u-WwY" id="eQj-65-XQV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,11 +28,16 @@
                         <outlet property="delegate" destination="-1" id="COI-mx-8MO"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="XHf-nO-dUf">
+                    <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="XHf-nO-dUf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="HTb-FY-ETS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="duC-8u-WwY" secondAttribute="bottom" id="OYO-fG-mzD"/>
+                <constraint firstItem="XHf-nO-dUf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UNd-0g-LQ2"/>
                 <constraint firstItem="duC-8u-WwY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vsd-co-eeI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="duC-8u-WwY" secondAttribute="trailing" id="sFt-1D-bdv"/>
                 <constraint firstItem="duC-8u-WwY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vaG-Oy-OlG"/>

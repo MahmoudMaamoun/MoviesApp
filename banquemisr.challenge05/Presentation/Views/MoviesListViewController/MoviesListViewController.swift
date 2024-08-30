@@ -9,6 +9,7 @@ import UIKit
 
 class MoviesListViewController: UIViewController {
 
+    @IBOutlet weak var activityIndecator: UIActivityIndicatorView!
     @IBOutlet weak var tbView: UITableView!
     
     private var viewModel:MoviesViewModel!
@@ -35,7 +36,18 @@ class MoviesListViewController: UIViewController {
     
     func bindToViewModel() {
         viewModel.isLoadingData.bind { isLoading in
-//            print(isLoading?.description)
+            guard let isLoading = isLoading else {
+                return
+            }
+            if isLoading {
+                DispatchQueue.main.async {
+                    self.activityIndecator.startAnimating()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.activityIndecator.stopAnimating()
+                }
+            }
         }
         
         viewModel.movies.bind { movies in
