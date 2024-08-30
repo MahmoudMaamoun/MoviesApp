@@ -7,14 +7,31 @@
 
 import UIKit
 
-class MoviesTabBarViewController: UIViewController {
-
+class MoviesTabBarViewController: UITabBarController {
+    private let apiClient = APIClient()
+    private lazy var moviesRepo = MoviesDataRepositoriy(apiClient: apiClient)
+    private lazy var fetchMoviesUseCase = FetchMoviesUseCase(movieRepository: moviesRepo)
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpViewControllers()
         // Do any additional setup after loading the view.
     }
     
+    private func setUpViewControllers() {
+        let nowPlayingViewModel = MoviesViewModel(fetchMoviesUseCase: fetchMoviesUseCase, category: .nowPlaying)
+        let popularViewModel = MoviesViewModel(fetchMoviesUseCase: fetchMoviesUseCase, category: .popular)
+        let upCommingViewModel = MoviesViewModel(fetchMoviesUseCase: fetchMoviesUseCase, category: .upComming)
+        
+        let nowPlayingViewController = MoviesListViewController(viewModel: nowPlayingViewModel)
+        nowPlayingViewController.title = "now playing"
+        
+        let popularViewController = MoviesListViewController(viewModel: popularViewModel)
+        popularViewController.title = "popular"
+        
+        let upCommingViewController = MoviesListViewController(viewModel: upCommingViewModel)
+        upCommingViewController.title = "upcoming"
+        self.viewControllers = [nowPlayingViewController,popularViewController,upCommingViewController]
+    }
 
     /*
     // MARK: - Navigation

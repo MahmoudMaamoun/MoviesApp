@@ -10,8 +10,19 @@ import Foundation
 class APIClient {
     private let networkLayer = NetworkLayer()
     
-    func fetchNowPlayingMovies(page:Int,completion: @escaping (Result<MovieResponse, NetworkError>) -> Void) {
-        let urlString = "\(Constants.shared.NOW_PLAYING_API)?page=\(page)&api_key=\(Constants.shared.apiKey)"
+    func fetchMovies(category:MovieCategory,page:Int,completion: @escaping (Result<MovieResponse, NetworkError>) -> Void) {
+        let endPoint:String
+        switch category {
+        case .nowPlaying:
+            endPoint = Constants.shared.NOW_PLAYING_API
+        case .popular :
+            endPoint = Constants.shared.POPULAR_Api
+        case .upComming:
+            endPoint = Constants.shared.UP_COMMING_API
+        }
+        
+        let urlString = "\(endPoint)?page=\(page)&api_key=\(Constants.shared.apiKey)"
+        
         networkLayer.get(urlString: urlString, responseType: MovieResponse.self) { result in
             switch(result){
             case .success(let moviesResponse):
@@ -24,31 +35,4 @@ class APIClient {
         }
     }
     
-    func fetchPopularMovies(completion: @escaping (Result<MovieResponse, NetworkError>) -> Void) {
-        let urlString = Constants.shared.POPULAR_Api
-        networkLayer.get(urlString: urlString, responseType: MovieResponse.self) { result in
-            switch(result){
-            case .success(let moviesResponse):
-                completion(.success(moviesResponse))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
-    }
-    
-    func fetchUpCommingMovies(completion: @escaping (Result<MovieResponse, NetworkError>) -> Void) {
-        let urlString = Constants.shared.UP_COMMING_API
-        networkLayer.get(urlString: urlString, responseType: MovieResponse.self) { result in
-            switch(result){
-            case .success(let moviesResponse):
-                completion(.success(moviesResponse))
-                return
-            case .failure(let error):
-                completion(.failure(error))
-                return
-            }
-        }
-    }
 }

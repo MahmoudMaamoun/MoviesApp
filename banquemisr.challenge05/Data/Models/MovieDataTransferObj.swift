@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Welcome
 struct MovieResponse: Codable {
-    let dates: Dates
+    let dates: Dates?
     let page: Int
     let results: [MovieDataTransferObj]
     let totalPages, totalResults: Int

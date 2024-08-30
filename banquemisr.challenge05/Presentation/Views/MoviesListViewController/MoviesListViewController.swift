@@ -13,13 +13,20 @@ class MoviesListViewController: UIViewController {
     
     private var viewModel:MoviesViewModel!
     
+    init(viewModel: MoviesViewModel) {
+            self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        viewModel = MoviesViewModel(moviesRepository: MoviesDataRepositoriy(apiClient: APIClient()))
         viewModel.fetchMovies()
         bindToViewModel()
-        // Do any additional setup after loading the view.
+
     }
 
     func registerCell() {

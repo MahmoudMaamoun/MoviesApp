@@ -9,7 +9,8 @@ import Foundation
 
 class MoviesViewModel {
     
-    private let moviesRepository:MoviesRepository
+    private let fetchMoviesUseCase:FetchMoviesUseCase
+    private let category:MovieCategory
     // Observable properties
     var movies: Observable<[MoviesCellViewModel]> = Observable([])
     var error: Observable<Error> = Observable(nil)
@@ -18,8 +19,9 @@ class MoviesViewModel {
     var currentPage: Int = 0
     var totalPages: Int = 1
     
-    init(moviesRepository: MoviesRepository) {
-        self.moviesRepository = moviesRepository
+    init(fetchMoviesUseCase: FetchMoviesUseCase,category:MovieCategory) {
+        self.fetchMoviesUseCase = fetchMoviesUseCase
+        self.category = category
     }
     
     func fetchMovies() {
@@ -29,7 +31,7 @@ class MoviesViewModel {
         currentPage+=1
         self.isLoadingData.value = true
         
-        moviesRepository.fetchMovies(page: currentPage) { [weak self] res in
+        fetchMoviesUseCase.execute(category:category,page: currentPage) { [weak self] res in
             self?.isLoadingData.value = false
             
             switch res {

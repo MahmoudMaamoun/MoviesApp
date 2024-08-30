@@ -14,9 +14,9 @@ class MoviesDataRepositoriy : MoviesRepository {
         self.apiClient = apiClient
     }
     
-    func fetchMovies(page: Int, completion: @escaping (Result<MoviePage, any Error>) -> Void) {
+    func fetchMovies(category:MovieCategory, page: Int, completion: @escaping (Result<MoviePage, any Error>) -> Void) {
         
-        apiClient.fetchNowPlayingMovies(page:page) { result in
+        apiClient.fetchMovies(category: category,page:page) { result in
             switch(result) {
             case .success(let moviesRep):
                 let movies = moviesRep.results.map {$0.toDomainModel()}
