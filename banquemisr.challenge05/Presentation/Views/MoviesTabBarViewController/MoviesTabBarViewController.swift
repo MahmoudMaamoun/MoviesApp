@@ -30,7 +30,7 @@ class MoviesTabBarViewController: UITabBarController {
         
         let upCommingViewController = MoviesListViewController(viewModel: upCommingViewModel)
         upCommingViewController.title = "upcoming"
-        self.viewControllers = [nowPlayingViewController,popularViewController,upCommingViewController]
+        self.viewControllers = [UINavigationController(rootViewController: nowPlayingViewController),UINavigationController(rootViewController: popularViewController),UINavigationController(rootViewController: upCommingViewController)]
     }
 
     /*

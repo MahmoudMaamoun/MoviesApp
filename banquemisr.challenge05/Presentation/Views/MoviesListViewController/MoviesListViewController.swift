@@ -95,4 +95,10 @@ extension MoviesListViewController : UITableViewDelegate,UITableViewDataSource {
             viewModel.fetchMovies()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC = MoviesDetailsViewController()
+        
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
 }
