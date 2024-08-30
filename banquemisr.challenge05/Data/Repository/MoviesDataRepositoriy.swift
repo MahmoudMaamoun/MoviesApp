@@ -14,13 +14,14 @@ class MoviesDataRepositoriy : MoviesRepository {
         self.apiClient = apiClient
     }
     
-    func fetchMovies(type: String, completion: @escaping (Result<[Movie], any Error>) -> Void) {
+    func fetchMovies(page: Int, completion: @escaping (Result<MoviePage, any Error>) -> Void) {
         
-        apiClient.fetchNowPlayingMovies { result in
+        apiClient.fetchNowPlayingMovies(page:page) { result in
             switch(result) {
             case .success(let moviesRep):
                 let movies = moviesRep.results.map {$0.toDomainModel()}
-                completion(.success(movies))
+                let moviePage = MoviePage(movies: movies, currentPage: moviesRep.page, totalPages: moviesRep.totalPages)
+                completion(.success(moviePage))
                 return
             case .failure(let err):
                 completion(.failure(err))

@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A33A050E-BDD1-435A-82AB-43340DB25074"
-            shouldBeEnabled = "Yes"
+            uuid = "B3B1FF4E-B87D-4E8D-A275-E85583052630"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "banquemisr.challenge05/Presentation/ViewModels/MoviesCellViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "loadImage(into:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "init(movie:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -15,7 +15,7 @@ class MoviesViewModel {
     var error: Observable<Error> = Observable(nil)
     var isLoadingData: Observable<Bool> = Observable(false)
         
-    var currentPage: Int = 1
+    var currentPage: Int = 0
     var totalPages: Int = 1
     
     init(moviesRepository: MoviesRepository) {
@@ -25,14 +25,18 @@ class MoviesViewModel {
     func fetchMovies() {
      
         guard let isLoading = self.isLoadingData.value, !isLoading else {return}
+        guard currentPage < totalPages else {return}
+        currentPage+=1
         self.isLoadingData.value = true
         
-        moviesRepository.fetchMovies(type: "") { [weak self] res in
+        moviesRepository.fetchMovies(page: currentPage) { [weak self] res in
             self?.isLoadingData.value = false
             
             switch res {
             case .success(let newMovies):
-                self?.movies.value?.append(contentsOf: newMovies.map({MoviesCellViewModel(movie: $0)}))
+                self?.currentPage = newMovies.currentPage
+                self?.totalPages = newMovies.totalPages
+                self?.movies.value?.append(contentsOf: newMovies.movies.map({MoviesCellViewModel(movie: $0)}))
                 return
             case .failure(let err):
                 self?.error.value = err

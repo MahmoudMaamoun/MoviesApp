@@ -30,6 +30,7 @@
 		E9DA8A6F2C80114500DA3BDF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8A6E2C80114500DA3BDF /* Observable.swift */; };
 		E9DA8A712C801C8200DA3BDF /* MoviesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DA8A702C801C8200DA3BDF /* MoviesCellViewModel.swift */; };
 		E9F05AB92C81172900EB74A9 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F05AB82C81172900EB74A9 /* ImageCache.swift */; };
+		E9F05ABB2C8138A500EB74A9 /* MoviePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F05ABA2C8138A500EB74A9 /* MoviePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		E9DA8A6E2C80114500DA3BDF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E9DA8A702C801C8200DA3BDF /* MoviesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCellViewModel.swift; sourceTree = "<group>"; };
 		E9F05AB82C81172900EB74A9 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		E9F05ABA2C8138A500EB74A9 /* MoviePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E9DA8A552C7FE1B500DA3BDF /* Movie.swift */,
+				E9F05ABA2C8138A500EB74A9 /* MoviePage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				E9DA8A5D2C7FED6800DA3BDF /* MoviesServices.swift in Sources */,
 				E9DA8A532C7FE02800DA3BDF /* MovieDataTransferObj.swift in Sources */,
 				E9DA8A6F2C80114500DA3BDF /* Observable.swift in Sources */,
+				E9F05ABB2C8138A500EB74A9 /* MoviePage.swift in Sources */,
 				E9DA8A5F2C7FEF1000DA3BDF /* FetchNowPlayingMoviesUseCase.swift in Sources */,
 				E9DA172C2C7E781B00A8B00A /* SceneDelegate.swift in Sources */,
 				E9DA176B2C7EAD3100A8B00A /* MoviesListViewController.swift in Sources */,

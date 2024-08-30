@@ -70,4 +70,10 @@ extension MoviesListViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if indexPath.row == viewModel.numOfRows() - 1 {
+            viewModel.fetchMovies()
+        }
+    }
 }

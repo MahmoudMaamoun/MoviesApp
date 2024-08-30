@@ -29,16 +29,17 @@ struct Dates: Codable {
 // MARK: - Result
 struct MovieDataTransferObj: Codable {
     let adult: Bool
-    let backdropPath: String
-    let genreIDS: [Int]
+    let backdropPath: String?
+    let genreIDS: [Int]?
     let id: Int
-    let originalLanguage: OriginalLanguage
-    let originalTitle, overview: String
-    let popularity: Double
-    let posterPath, releaseDate, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
+    let originalLanguage: String?
+    let originalTitle, overview: String?
+    let popularity: Double?
+    let posterPath: String?
+    let releaseDate, title: String
+    let video: Bool?
+    let voteAverage: Double?
+    let voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -58,11 +59,5 @@ struct MovieDataTransferObj: Codable {
     func toDomainModel() -> Movie {
         return .init(id: id, title: title, releaseDate: releaseDate, posterPath: posterPath)
     }
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case hi = "hi"
-    case zh = "zh"
 }
 

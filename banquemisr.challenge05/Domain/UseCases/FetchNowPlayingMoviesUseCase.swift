@@ -9,12 +9,13 @@ import Foundation
 
 class FetchNowPlayingMoviesUseCase {
     private let movieRepository: MoviesRepository
-
+    private var page:Int = 1
+    
     init(movieRepository: MoviesRepository) {
         self.movieRepository = movieRepository
     }
 
-    func execute(completion: @escaping (Result<[Movie], Error>) -> Void) {
-        movieRepository.fetchMovies(type: "NowPlaying", completion: completion)
+    func execute(completion: @escaping (Result<MoviePage, Error>) -> Void) {
+        movieRepository.fetchMovies(page:page , completion: completion)
     }
 }

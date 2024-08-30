@@ -19,8 +19,9 @@ class MoviesCellViewModel {
     init(movie:Movie) {
         self.id = movie.id
         self.title = movie.title
-        self.posterImage = movie.posterPath
-        self.imageURL = "\(Constants.shared.IMAGE_BASE_URL)\(movie.posterPath)"
+        
+        self.posterImage = (movie.posterPath ?? "")!
+        self.imageURL = "\(Constants.shared.IMAGE_BASE_URL)\(self.posterImage)"
         self.releaseDate = movie.releaseDate
         self.imageCache = ImageCache()
     }

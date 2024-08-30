@@ -8,9 +8,8 @@
 import Foundation
 
 struct Movie {
-    
     let id: Int
     let title: String
     let releaseDate: String
-    let posterPath:String
+    let posterPath:String?
 }
