@@ -14,9 +14,9 @@ struct MovieDetails {
     let releaseDate: String
     let posterPath:String?
     let overview: String?
-    let genres:[String]?
-    let runtime: Int?
-    let adult: Bool?
+    var genres:[String]?
+    var runtime: Int?
+    var adult: Bool?
     let vote_average: Double?
     let vote_count: Int?
     

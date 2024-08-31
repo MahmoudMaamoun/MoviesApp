@@ -9,27 +9,27 @@ import Foundation
 
 // MARK: - Movie Details DTO
 struct MovieDetailsDataTransferObj: Codable {
-    let adult: Bool
-    let backdropPath: String
+    let adult: Bool?
+    let backdropPath: String?
     let belongsToCollection: BelongsToCollection?
-    let budget: Int
+    let budget: Int?
     let genres: [Genre]
-    let homepage: String
+    let homepage: String?
     let id: Int
     let imdbID: String?
     let originCountry: [String]
     let originalLanguage, originalTitle, overview: String
-    let popularity: Double
+    let popularity: Double?
     let posterPath: String
-    let productionCompanies: [ProductionCompany]
-    let productionCountries: [ProductionCountry]
+    let productionCompanies: [ProductionCompany]?
+    let productionCountries: [ProductionCountry]?
     let releaseDate: String
     let revenue, runtime: Int
-    let spokenLanguages: [SpokenLanguage]
+    let spokenLanguages: [SpokenLanguage]?
     let status, tagline, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
+    let video: Bool?
+    let voteAverage: Double?
+    let voteCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case adult

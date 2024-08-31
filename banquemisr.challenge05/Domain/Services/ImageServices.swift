@@ -14,7 +14,7 @@ protocol ImageServicesProtocol {
 
 class ImageService: ImageServicesProtocol {
     static let shared = ImageService()
-    private let imageCache = NSCache<NSString, UIImage>()
+    let imageCache = NSCache<NSString, UIImage>()
 
     private init() {}
 

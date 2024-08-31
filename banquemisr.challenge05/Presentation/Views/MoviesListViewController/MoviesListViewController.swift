@@ -97,6 +97,7 @@ extension MoviesListViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if let movie = viewModel.movies.value?[indexPath.row] {
             let movieItem = Movie(id: movie.id, title: movie.title, releaseDate: movie.releaseDate, posterPath: movie.posterImage, overview: movie.overview)
             let detailsVC = MoviesDetailsViewController(movie:movieItem)

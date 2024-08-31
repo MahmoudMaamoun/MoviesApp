@@ -80,7 +80,7 @@ class MoviesDetailsViewController: UIViewController {
         if let genres = details.genres {
             self.generes.text = genres.joined(separator: " | ")
         }
-        if let adult = details.adult {
+        if let adult = details.adult,adult {
             self.adult.text = "Adult (Yes)"
         }
         if let runtime = details.runtime {
