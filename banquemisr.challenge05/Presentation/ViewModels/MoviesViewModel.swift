@@ -47,6 +47,11 @@ class MoviesViewModel {
         }
     }
     
+    func fetchMovie(for index:Int) -> Movie
+    {
+        let movieCellVM = movies.value![index]
+        return .init(id: movieCellVM.id, title: movieCellVM.title, releaseDate: movieCellVM.releaseDate, posterPath: movieCellVM.posterImage, overview: movieCellVM.overview)
+    }
     func numOfRows()->Int {
         guard let count = movies.value?.count else {return 0}
         return count

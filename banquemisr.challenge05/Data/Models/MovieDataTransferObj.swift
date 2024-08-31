@@ -57,7 +57,7 @@ struct MovieDataTransferObj: Codable {
     }
     
     func toDomainModel() -> Movie {
-        return .init(id: id, title: title, releaseDate: releaseDate, posterPath: posterPath)
+        return .init(id: id, title: title, releaseDate: releaseDate, posterPath: posterPath,overview: overview)
     }
 }
 

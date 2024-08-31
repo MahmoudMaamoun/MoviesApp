@@ -37,6 +37,11 @@ class Constants {
             return "https://api.themoviedb.org/3/movie/now_playing"
         }
     }
+    public var MOVIE_DETAILS_API : String {
+        get {
+            return "https://api.themoviedb.org/3/movie/"
+        }
+    }
     public var IMAGE_BASE_URL : String {
         get {
             return "https://image.tmdb.org/t/p/w500"

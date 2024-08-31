@@ -30,4 +30,18 @@ class MoviesDataRepositoriy : MoviesRepository {
         }
     }
     
+    func fetchMovieDetails(movieId: Int, completion: @escaping (Result<MovieDetails, any Error>) -> Void) {
+        apiClient.fetchMovieDetails(movieId: movieId) { result in
+            switch (result) {
+            case .success(let detailsObj):
+                let movieDetails = detailsObj.toDomainModel()
+                completion(.success(movieDetails))
+                return
+            case .failure(let error):
+                completion(.failure(error))
+                return
+            }
+        }
+    }
+    
 }

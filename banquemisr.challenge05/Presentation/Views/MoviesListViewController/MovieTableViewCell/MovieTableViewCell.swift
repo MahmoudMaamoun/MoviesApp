@@ -27,7 +27,11 @@ class MovieTableViewCell: UITableViewCell {
     func setup(with cellViewModel:MoviesCellViewModel){
         self.movieDate.text = cellViewModel.releaseDate
         self.movieTitle.text = cellViewModel.title
-        cellViewModel.loadImage(into: moviePosterView)
+        cellViewModel.loadImage { [weak self] imgData in
+            if let data = imgData {
+                self?.moviePosterView.image = UIImage(data: data)
+            }
+        }
 //        self.moviePosterView.image = UIImage(data: Data(contentsOf: URL(string: "C\(Constants.shared.)")))
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

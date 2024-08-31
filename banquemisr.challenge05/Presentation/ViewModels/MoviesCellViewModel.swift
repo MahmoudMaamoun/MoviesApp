@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class MoviesCellViewModel {
     var id:Int
@@ -14,43 +13,21 @@ class MoviesCellViewModel {
     var posterImage:String
     var releaseDate:String
     var imageURL:String
-    private let imageCache: ImageCache
+    var overview:String?
     
+    private let imageService: ImageServicesProtocol
+
     init(movie:Movie) {
         self.id = movie.id
         self.title = movie.title
-        
+        self.overview = movie.overview
         self.posterImage = (movie.posterPath ?? "")!
         self.imageURL = "\(Constants.shared.IMAGE_BASE_URL)\(self.posterImage)"
         self.releaseDate = movie.releaseDate
-        self.imageCache = ImageCache()
+        self.imageService = ImageService.shared
     }
-    
-    func loadImage(into imageView: UIImageView) {
-           guard let url = URL(string: imageURL) else { return }
-           
-           // Check if the image is cached
-           if let cachedImage = imageCache.image(forKey: posterImage) {
-               imageView.image = cachedImage
-               return
-           }
-           
-           // Fetch the image
-           let task = URLSession.shared.dataTask(with: url) { data, response, error in
-               guard let data = data, error == nil, let image = UIImage(data: data) else {
-                   return
-               }
-               
-               // Cache the image
-               self.imageCache.setImage(image, forKey: self.posterImage)
-               
-               // Update the image view on the main thread
-               DispatchQueue.main.async {
-                   imageView.image = image
-               }
-           }
-           
-           task.resume()
-       }
+    func loadImage(completion: @escaping (Data?) -> Void) {
+        imageService.loadImage(from: imageURL, completion: completion)
+    }
    }
 

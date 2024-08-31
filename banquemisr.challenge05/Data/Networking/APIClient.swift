@@ -35,4 +35,18 @@ class APIClient {
         }
     }
     
+    func fetchMovieDetails(movieId: Int, completion: @escaping (Result<MovieDetailsDataTransferObj, any Error>) -> Void) {
+        let urlString = "\(Constants.shared.MOVIE_DETAILS_API)\(movieId)?api_key=\(Constants.shared.apiKey)"
+        
+        networkLayer.get(urlString: urlString, responseType: MovieDetailsDataTransferObj.self) { result in
+            switch(result){
+            case .success(let moviesResponse):
+                completion(.success(moviesResponse))
+                return
+            case .failure(let error):
+                completion(.failure(error))
+                return
+            }
+        }
+    }
 }
