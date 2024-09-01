@@ -7,22 +7,14 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case invalidURL
-    case invalidResponse
-    case serverError
-    case requestFailed(Error)
-    case noData
-    case decodingError(Error)
-}
 
 class NetworkLayer {
-    typealias CompletionHandler<T> = (Result<T, NetworkError>) -> Void
+    typealias CompletionHandler<T> = (Result<T, MoviesError>) -> Void
     
-    func get<T: Decodable>(urlString: String, responseType: T.Type, completion:@escaping (Result<T, NetworkError>) -> Void) {
+    func get<T: Decodable>(urlString: String, responseType: T.Type, completion:@escaping (Result<T, MoviesError>) -> Void) {
         
         guard let url = URL(string: urlString) else {
-            completion(.failure(.invalidURL))
+            completion(.failure(.invalidUrl))
             return
         }
         
@@ -34,7 +26,7 @@ class NetworkLayer {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                completion(.failure(.requestFailed(error)))
+                completion(.failure(.requestFaild(error.localizedDescription)))
                 return
             }
 
@@ -52,11 +44,11 @@ class NetworkLayer {
                     let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(decodedResponse))
                 } catch(let error) {
-                    completion(.failure(.decodingError(error)))
+                    completion(.failure(.decodingError(error.localizedDescription)))
                 }
                 
             } else {
-                completion(.failure(.serverError))
+                completion(.failure(.serverError(httpResponse.statusCode)))
             }
         }
         

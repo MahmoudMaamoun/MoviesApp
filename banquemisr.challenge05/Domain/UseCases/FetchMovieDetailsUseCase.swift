@@ -14,7 +14,7 @@ class FetchMovieDetailsUseCase {
         self.moviesRepositiory = moviesRepositiory
     }
     
-    func excute(movieId:Int,completion:@escaping (Result<MovieDetails,Error>)->()){
+    func excute(movieId:Int,completion:@escaping (Result<MovieDetails,MoviesError>)->()){
         moviesRepositiory.fetchMovieDetails(movieId: movieId, completion: completion)
     }
 }

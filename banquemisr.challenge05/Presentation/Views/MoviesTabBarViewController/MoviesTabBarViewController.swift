@@ -23,15 +23,17 @@ class MoviesTabBarViewController: UITabBarController {
         let upCommingViewModel = MoviesViewModel(fetchMoviesUseCase: fetchMoviesUseCase, category: .upComming)
         
         let nowPlayingViewController = MoviesListViewController(viewModel: nowPlayingViewModel)
-        nowPlayingViewController.title = "now playing"
-        
+        nowPlayingViewController.title = "Now Playing"
+         nowPlayingViewController.tabBarItem = UITabBarItem(title: "Now Playing", image: UIImage(systemName: "play.circle"), selectedImage: UIImage(systemName: "play.circle.fill"))
         let popularViewController = MoviesListViewController(viewModel: popularViewModel)
-        popularViewController.title = "popular"
-        
-        let upCommingViewController = MoviesListViewController(viewModel: upCommingViewModel)
-        upCommingViewController.title = "upcoming"
-        
-        self.viewControllers = [UINavigationController(rootViewController: nowPlayingViewController),UINavigationController(rootViewController: popularViewController),UINavigationController(rootViewController: upCommingViewController)]
+        popularViewController.title = "Popular"
+            popularViewController.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star.fill"))
+            
+        let upcomingViewController = MoviesListViewController(viewModel: upCommingViewModel)
+        upcomingViewController.title = "Upcoming"
+          upcomingViewController.tabBarItem = UITabBarItem(title: "Upcoming", image: UIImage(systemName: "calendar"), selectedImage: UIImage(systemName: "calendar.fill"))
+
+        self.viewControllers = [UINavigationController(rootViewController: nowPlayingViewController),UINavigationController(rootViewController: popularViewController),UINavigationController(rootViewController: upcomingViewController)]
     }
 
     /*

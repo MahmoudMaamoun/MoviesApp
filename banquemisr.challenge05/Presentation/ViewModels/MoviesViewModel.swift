@@ -13,7 +13,7 @@ class MoviesViewModel {
     private let category:MovieCategory
     // Observable properties
     var movies: Observable<[MoviesCellViewModel]> = Observable([])
-    var error: Observable<Error> = Observable(nil)
+    var error: Observable<MoviesError> = Observable(nil)
     var isLoadingData: Observable<Bool> = Observable(false)
         
     var currentPage: Int = 0

@@ -50,12 +50,14 @@ class MoviesListViewController: UIViewController {
             }
         }
         
-        viewModel.movies.bind { movies in
-            self.reloadTableView()
+        viewModel.movies.bind { [weak self] movies in
+            self?.reloadTableView()
         }
         
-        viewModel.error.bind { err in
-            print(err.debugDescription)
+        viewModel.error.bind { [weak self] err in
+            if let err = err?.localizedDescription {
+                self?.showErrorAlert(with: err)
+            }
         }
     }
     

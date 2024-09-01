@@ -10,7 +10,7 @@ import Foundation
 class APIClient {
     private let networkLayer = NetworkLayer()
     
-    func fetchMovies(category:MovieCategory,page:Int,completion: @escaping (Result<MovieResponse, NetworkError>) -> Void) {
+    func fetchMovies(category:MovieCategory,page:Int,completion: @escaping (Result<MovieResponse, MoviesError>) -> Void) {
         let endPoint:String
         switch category {
         case .nowPlaying:
@@ -35,7 +35,7 @@ class APIClient {
         }
     }
     
-    func fetchMovieDetails(movieId: Int, completion: @escaping (Result<MovieDetailsDataTransferObj, any Error>) -> Void) {
+    func fetchMovieDetails(movieId: Int, completion: @escaping (Result<MovieDetailsDataTransferObj, MoviesError>) -> Void) {
         let urlString = "\(Constants.shared.MOVIE_DETAILS_API)\(movieId)?api_key=\(Constants.shared.apiKey)"
         
         networkLayer.get(urlString: urlString, responseType: MovieDetailsDataTransferObj.self) { result in

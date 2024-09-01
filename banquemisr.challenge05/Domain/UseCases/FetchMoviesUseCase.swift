@@ -18,7 +18,7 @@ class FetchMoviesUseCase {
         self.movieRepository = movieRepository
     }
 
-    func execute(category:MovieCategory,page:Int,completion: @escaping (Result<MoviePage, Error>) -> Void) {
+    func execute(category:MovieCategory,page:Int,completion: @escaping (Result<MoviePage, MoviesError>) -> Void) {
         movieRepository.fetchMovies(category: category, page:page,completion: completion)
     }
 }

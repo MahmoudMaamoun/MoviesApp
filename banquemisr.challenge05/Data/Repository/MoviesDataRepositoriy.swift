@@ -8,13 +8,14 @@
 import Foundation
 
 class MoviesDataRepositoriy : MoviesRepository {
+    
     private let apiClient:APIClient
     
     init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
     
-    func fetchMovies(category:MovieCategory, page: Int, completion: @escaping (Result<MoviePage, any Error>) -> Void) {
+    func fetchMovies(category:MovieCategory, page: Int, completion: @escaping (Result<MoviePage,MoviesError>) -> Void) {
         
         apiClient.fetchMovies(category: category,page:page) { result in
             switch(result) {
@@ -30,7 +31,7 @@ class MoviesDataRepositoriy : MoviesRepository {
         }
     }
     
-    func fetchMovieDetails(movieId: Int, completion: @escaping (Result<MovieDetails, any Error>) -> Void) {
+    func fetchMovieDetails(movieId: Int, completion: @escaping (Result<MovieDetails, MoviesError>) -> Void) {
         apiClient.fetchMovieDetails(movieId: movieId) { result in
             switch (result) {
             case .success(let detailsObj):
